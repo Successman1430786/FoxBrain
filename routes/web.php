@@ -91,7 +91,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('/activity-logs',[\App\Http\Controllers\Admin\ActivityLogController::class, 'index'])
             ->name('admin.activity-logs.index');
+        
+        Route::resource('programs', \App\Http\Controllers\Admin\ProgramController::class)
+            ->except(['show'])
+            ->names('admin.programs');  
+        
+        Route::resource('sales-employees',\App\Http\Controllers\Admin\SalesEmployeeController::class)
+             ->except(['show'])
+              ->parameters(['sales-employees' => 'sales_employee',])
+                ->names('admin.sales-employees');
 
+        Route::resource('lead-sources',\App\Http\Controllers\Admin\LeadSourceController::class)
+            ->except(['show'])
+            ->parameters(['lead-sources' => 'lead_source',])
+             ->names('admin.lead-sources');
+
+        Route::resource('leads',\App\Http\Controllers\Admin\LeadController::class)
+            ->except(['show'])
+            ->names('admin.leads');
         });
 
 

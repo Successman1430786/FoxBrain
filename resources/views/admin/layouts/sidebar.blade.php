@@ -303,6 +303,77 @@
 
         @endif
 
+
+
+         {{-- =====================================================
+            SYSTEM
+        ====================================================== --}}
+        <div class="px-3 pt-6 pb-2 text-[10px] font-bold
+                    uppercase tracking-[0.18em] text-slate-600">
+
+            Sales Management
+
+        </div>
+
+
+        @if(auth()->user()->hasPermission('programs.view'))
+    <a
+        href="{{ route('admin.programs.index') }}"
+        class="block px-4 py-3 rounded-lg
+        {{ request()->routeIs('admin.programs.*')
+            ? 'bg-blue-600 text-white'
+            : 'text-gray-300 hover:bg-gray-800' }}"
+    >
+        Programs / Products
+    </a>
+@endif
+
+@if(auth()->user()->hasPermission('sales_employees.view'))
+
+    <a
+        href="{{ route('admin.sales-employees.index') }}"
+        class="block px-4 py-3 rounded-lg
+        {{ request()->routeIs('admin.sales-employees.*')
+            ? 'bg-blue-600 text-white'
+            : 'text-gray-300 hover:bg-gray-800' }}"
+    >
+        Sales Employees
+    </a>
+
+@endif
+
+
+@if(auth()->user()->hasPermission('lead_sources.view'))
+
+    <a
+        href="{{ route('admin.lead-sources.index') }}"
+        class="block px-4 py-3 rounded-lg
+        {{ request()->routeIs('admin.lead-sources.*')
+            ? 'bg-blue-600 text-white'
+            : 'text-gray-300 hover:bg-gray-800' }}"
+    >
+        Lead Sources
+    </a>
+
+@endif
+
+
+@if(auth()->user()->hasPermission('leads.view'))
+
+  
+
+    <a
+        href="{{ route('admin.leads.index') }}"
+        class="block px-4 py-3 rounded-lg
+        {{ request()->routeIs('admin.leads.*')
+            ? 'bg-blue-600 text-white'
+            : 'text-gray-300 hover:bg-gray-800' }}"
+    >
+        Leads   
+    </a>
+
+@endif
+
     </nav>
 
 
